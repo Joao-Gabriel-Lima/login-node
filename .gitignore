@@ -1,0 +1,18 @@
+# Dependências (nunca sobe, quem clonar reinstala com npm install)
+node_modules
+
+# Variáveis de ambiente e segredos
+.env
+
+# Banco de dados local (se for SQLite em arquivo)
+*.sqlite
+*.sqlite3
+*.db
+
+# Logs
+npm-debug.log*
+*.log
+
+# Arquivos do sistema/editor
+.DS_Store
+.vscode/
