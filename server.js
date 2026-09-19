@@ -8,6 +8,7 @@ app.use(express.urlencoded({extended: true}))
 const PORT = 5000
 //Parte de coisas baixadas)
 
+//rotas//
 app.listen(PORT, () => {
     console.log("servidor rodando na porta 5000")
 })
@@ -15,16 +16,18 @@ app.listen(PORT, () => {
 app.get('/', (req, res)=>{
     res.send("Servidor rodando")
 })
+//rotas//
 
+//rota do registro//
 app.post('/register',async (req, res) => {
     const {nome, email, senha} = req.body
 
-//Parte da criptografia
+//Parte da criptografia//
 const saltRounds = 10
 const senhaHash = await bcrypt.hash(senha, saltRounds)
-//Parte da criptografia
+//Parte da criptografia//
 
-//Sql
+//Sql//
 try{
 db.prepare('INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)').run(nome, email, senhaHash)
 const resultado = db.prepare('SELECT * FROM usuarios').all()
@@ -37,5 +40,27 @@ res.status(201).json({mensagem:"Usuário criado com sucesso!"})
         res.status(500).json({ServerError:"Erro no servidor!"})
     }
 }
-//Sql
+//Sql//
 })
+//rota do registro//
+
+//---//
+
+//rota do login//
+app.post('/login', async (req,res)=>{
+    const {email, senha} = req.body
+
+const usuario = db.prepare('SELECT * FROM usuarios WHERE email = ?').get(email)
+console.log(usuario)
+if(!usuario){
+    return res.status(401).json({ erro: "email ou senha inválidos" })
+}
+
+const senhaCorreta = await bcrypt.compare(senha, usuario.senha)
+if(!senhaCorreta){
+    return res.status(401).json({ erro: "email ou senha inválidos" })
+}else{
+    return res.status(200).json({ mensagem: "Email e senha válidos!" })
+}
+})
+//rota do login//

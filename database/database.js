@@ -1,5 +1,6 @@
+const path = require('path')
 const Database = require('better-sqlite3');
-const db = new Database('usuarios.db');
+const db = new Database(path.join(__dirname, 'usuarios.db'));
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS usuarios(
