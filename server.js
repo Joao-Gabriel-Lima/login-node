@@ -1,12 +1,22 @@
-//Parte de coisas baixadas
+//Parte das coisas baixadas e importantes//
 const db = require('./database/database.js')
 const bcrypt = require('bcrypt');
 const express = require('express')
+const session = require('express-session');
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 const PORT = 5000
-//Parte de coisas baixadas)
+app.use(session({
+    secret: '1234567',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 60000 * 30
+    }
+}))
+
+//Parte das coisas baixadas e importantes//
 
 //rotas//
 app.listen(PORT, () => {
@@ -60,7 +70,27 @@ const senhaCorreta = await bcrypt.compare(senha, usuario.senha)
 if(!senhaCorreta){
     return res.status(401).json({ erro: "email ou senha inválidos" })
 }else{
+    req.session.userID = usuario.id
     return res.status(200).json({ mensagem: "Email e senha válidos!" })
 }
 })
 //rota do login//
+
+//middleware//
+function estaLogado(req, res, next){
+    if(req.session.userID){
+        next()
+    }else{
+        res.status(401).json({erro: 'Não está logado'})
+    }
+}
+//middleware//
+
+
+//rota de dashboard//
+
+app.get('/dashboard', estaLogado, (req, res)=>{
+    res.send('Você está logado')
+})
+
+//rota de dashboard//
