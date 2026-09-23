@@ -1,0 +1,94 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Fundo da página com gradiente escuro, necessário pro efeito de vidro aparecer */
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #2b1400 100%);
+}
+
+/* O card de vidro */
+form {
+    background: rgba(20, 20, 20, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* compatibilidade com Safari */
+    border: 1px solid rgba(255, 140, 0, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    padding: 40px 32px;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Inputs */
+input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 140, 0, 0.3);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: background 0.2s ease, border 0.2s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+input:focus {
+    background: rgba(255, 140, 0, 0.08);
+    border: 1px solid rgba(255, 140, 0, 0.8);
+}
+
+/* Botão principal */
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease;
+}
+
+#botao1 {
+    background: #ff8c00;
+    color: #0d0d0d;
+}
+
+#botao1:hover {
+    transform: translateY(-2px);
+    background: #ffa733;
+}
+
+/* Botão de "ainda não tem conta" — mais discreto */
+#botaoCadastro {
+    background: transparent;
+    color: rgba(255, 140, 0, 0.85);
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+#botaoCadastro:hover {
+    color: #ffa733;
+}
+
+/* Mensagem de erro */
+#mensagem-erro {
+    color: #ff6b6b;
+    font-size: 13px;
+    text-align: center;
+    min-height: 16px;
+}
