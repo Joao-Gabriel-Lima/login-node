@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: true}))
 const PORT = process.env.PORT
 app.use(express.static('public'))
 app.use(session({
-    secret: 'secret: process.env.SESSION_SECRET,',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -22,11 +22,11 @@ app.use(session({
 
 //rotas//
 app.listen(PORT, () => {
-    console.log("servidor rodando na porta 5000")
+    console.log(`servidor rodando na porta ${PORT}`)
 })
 
 app.get('/', (req, res)=>{
-    res.send("Servidor rodando")
+    res.redirect('/login.html')
 })
 //rotas//
 

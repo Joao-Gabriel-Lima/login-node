@@ -16,3 +16,8 @@ const referencia = document.getElementById("botao1")
         }
     })
 })
+
+const logar =document.getElementById("botaoCadastro")
+.addEventListener('click', function(){
+    window.location.href = 'register.html'
+})
