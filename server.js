@@ -3,13 +3,14 @@ const db = require('./database/database.js')
 const bcrypt = require('bcrypt');
 const express = require('express')
 const session = require('express-session');
+const env = require('dotenv').config()
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-const PORT = 5000
+const PORT = process.env.PORT
 app.use(express.static('public'))
 app.use(session({
-    secret: '1234567',
+    secret: 'secret: process.env.SESSION_SECRET,',
     resave: false,
     saveUninitialized: false,
     cookie: {
