@@ -10,11 +10,7 @@ app.use(express.urlencoded({extended: true}))
 const PORT = process.env.PORT
 app.use(express.static('public'))
 app.use(session({
-<<<<<<< HEAD
     secret: process.env.SESSION_SECRET,
-=======
-    secret: 'secret: process.env.SESSION_SECRET,',
->>>>>>> 9d65cfd21cc252659c5990f788b8f1156411b9e7
     resave: false,
     saveUninitialized: false,
     cookie: {
