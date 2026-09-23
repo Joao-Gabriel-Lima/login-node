@@ -2,7 +2,7 @@
 
 Sistema de autenticação completo (cadastro, login e proteção de rotas) construído do zero como projeto de estudo e portfólio, com back-end, banco de dados e front-end integrados.
 
-🔗 **[Acesse o projeto no ar](https://sistema-login-node.onrender.com)**
+🔗 **[Acesse o projeto no ar](https://sua-url.onrender.com/)**
 
 ## 🚀 Tecnologias
 
@@ -55,4 +55,5 @@ O projeto está hospedado no plano gratuito do Render, que não possui disco per
 - Como funciona autenticação por trás dos panos (hash vs criptografia, sessão vs token)
 - Modelagem básica de banco de dados relacional com SQL puro
 - Comunicação entre front-end e back-end via `fetch` e API REST
-- Boas práticas de segurança (variáveis de ambiente,
+- Boas práticas de segurança (variáveis de ambiente, `.gitignore`, tratamento de erros)
+- Organização de projeto Node.js (separação entre conexão de banco e rotas)
